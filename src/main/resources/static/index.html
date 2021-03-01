@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        AmigoX
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link href="boostrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="boostrap/css/bootstrap-grid.css" rel="stylesheet"/>
+    <link href="boostrap/css/bootstrap-reboot.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" onsubmit="event.preventDefault();">
+    <img onclick="loadHome();" href="#home" class="ml-0" src="xing-square-brands.svg" width="98" height="50">
+    <a onclick="loadHome();" class="navbar-brand ml-0" href="#home" >
+
+        Amigo X
+    </a>
+    <button class="navbar-toggler mr-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" data-toggles="collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mr-0"></span>
+    </button>
+    <div class="collapse navbar-collapse ml" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a onclick="loadUsers();" class="nav-item nav-link" href="#users" >Grupos</a>
+            <a onclick="logOut();" class="nav-item nav-link d-none"  id="logOut" href="" >Log-out</a>
+        </div>
+    </div>
+</nav>
+</div>
+
+<div class=" text-center mt-5 d-none" id="welcomeSign">
+    <h1>Bem vindo ao Amigo X</h1>
+    <h4 style="color: #6c757d"> O melhor gerenciador de Amigos Secretos</h4>
+</div>
+
+<div class="d-none" id="login">
+    <table>
+        <tr>
+            <td>
+                <h2 class="ml-5" >Cadastro Login:</h2>
+                <form class="ml-5" onsubmit="event.preventDefault();onSignSubmit();"autocomplete="off">
+                    <div class="form-group " >
+                        <label>Nome Completo</label>
+                        <input type="text"  class="form-control"   name="nomeTodo" id="nomeTodoLogin" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="form-group " >
+                        <label>Idade</label>
+                        <input type="number"  min="0" class="form-control"  id="agelogin"  placeholder="Digite sua idade" required>
+                    </div>
+                    <div class="form-group " >
+                        <label>e-mail</label>
+                        <input type="email" class="form-control" id="emailLogin"   placeholder="exemplo@gmail.com" required>
+                    </div>
+                    <div class="form-group " >
+                        <label>Senha</label>
+                        <input type="password" class="form-control" id="senhaLogin"   placeholder="Digite sua Senha" required>
+                    </div>
+                    <div class="form-group " >
+                        <input type="submit"class="btn btn-primary"  style="background-color: #4e555b; border-color: #4e555b" value="Enviar">
+                    </div>
+                    <div class="form-group " >
+                        <a href="#users" onclick="loadUsers()"> Já tem conta? Log-in</a>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+    <div class="d-none" id="Entry">
+        <table>
+            <tr>
+                <td>
+                    <h2 class="ml-5" >Login:</h2>
+                    <form class="ml-5" onsubmit="event.preventDefault(); login();"autocomplete="off">
+                        <div class="form-group " >
+                            <label>e-mail</label>
+                            <input type="email" class="form-control" id="emailLoginEntry" placeholder="exemplo@gmail.com" required>
+                        </div>
+                        <div class="form-group " >
+                            <label>Senha</label>
+                            <input type="password" class="form-control" id="senhaEntry" placeholder="Digite sua Senha" required>
+                        </div>
+                        <div class="form-group " >
+                            <input type="submit"class="btn btn-primary"  style="background-color: #4e555b; border-color: #4e555b" value="Enviar">
+                        </div>
+                        <div class="form-group " >
+                            <a href="#users#cadastro" onclick="showSignUp()"> Não tem conta? Cadastre-se</a>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+<div class=" d-none mt-4" id="mainTable">
+
+    <h2 id="bemVindo" title="0" class="ml-5" ></h2>
+<table>
+    <tr>
+        <h3 class="ml-5" >Cadastre pessoas para sortear:</h3>
+        <td>
+
+            <form class="ml-5" onsubmit="event.preventDefault();onFormSubmit();"autocomplete="off">
+                <div class="form-group" >
+                    <label>Nome</label>
+                    <input type="text"  class="form-control"  name="nomeTodo" id="nomeTodo" placeholder="Nome do participante" required>
+                </div>
+                <div class="form-group " >
+                    <label>Idade</label>
+                    <input type="text"  class="form-control"  id="age" placeholder="Idade do participante" required>
+                </div>
+                <div class="form-group " >
+                    <label>e-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="participante@gmail.com" required>
+                </div>
+                <div class="form-group " >
+                    <input type="submit"class="btn btn-primary"  style="background-color: #4e555b; border-color: #4e555b" value="Enviar" required>
+                </div>
+            </form>
+        </td>
+    </tr>
+    </table>
+    <div class="col-6">
+        <table>
+            <tr>
+                <td>
+        <form class="ml-5" onsubmit="event.preventDefault();sort();"autocomplete="off">
+            <div class="form-group " >
+                <label>e-mail para enviar os resultados</label>
+                <input type="email" class="form-control" id="emailSender" placeholder="destiny@gmail.com" required>
+            </div>
+            <div class="form-group " >
+                <input type="submit"class="btn btn-primary"  style="background-color: #4e555b; border-color: #4e555b" value="Sortear" required>
+            </div>
+        </form>
+        <h2 class="ml-5" >Pessoas cadastradas:</h2>
+
+        <table class="ml-5 table table-striped" style="size: auto" onload="loadDB()" class="list" id="Listadepessoas">
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th> Nome</th>
+            <th>Idade</th>
+        </tr>
+        </thead>
+        <tbody id="listabody">
+        </tbody>
+            </td>
+            </tr>
+        </table>
+    </div>
+        </table>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
